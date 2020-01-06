@@ -1,5 +1,6 @@
 package com.springboot.ms.movieinfo.resourse;
 
+import com.springboot.ms.movieinfo.model.Movie;
 import com.springboot.ms.movieinfo.resourseobject.MovieRO;
 import com.springboot.ms.movieinfo.resourseobject.MoviesRO;
 import com.springboot.ms.movieinfo.service.MovieService;
@@ -37,5 +38,12 @@ public class MovieResource {
     public MovieRO getMovieByIdExtResource(@PathVariable  String movieId) {
         return movieService.getMovieByIdExtResource(movieId);
     }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "")
+    public MovieRO updateMovie(@RequestBody MovieRO movieRO) {
+        return movieService.addMovie(movieRO);
+    }
+
+
 }
 
