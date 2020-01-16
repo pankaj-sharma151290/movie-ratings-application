@@ -21,7 +21,7 @@ services:
   movie-info-service:
     image: movie-info:1.0.1
     environment:
-      - EUREKA_SERVICE_URL=http:eureka-discovery-server//:8761/eureka/
+      - EUREKA_SERVICE_URL=http://eureka-discovery-server:8761/eureka/
     depends_on:
       - eureka-discovery-server
     networks:
@@ -33,7 +33,7 @@ services:
     image: movie-ratings
     environment:
       - MONGODB_URI=mongodb://movie-ratings-mongodb:27017/test
-      - EUREKA_SERVICE_URL=http:eureka-discovery-server//:8761/eureka/
+      - EUREKA_SERVICE_URL=http://eureka-discovery-server:8761/eureka/
     depends_on:
       - movie-ratings-mongodb
       - eureka-discovery-server
@@ -47,7 +47,7 @@ services:
     environment:
       - MOVIE_INFO_SERVICE_NAME=movie-info-service
       - MOVIE_RATINGS_SERVICE_NAME=movie-ratings-service
-      - EUREKA_SERVICE_URL=http:eureka-discovery-server//:8761/eureka/
+      - EUREKA_SERVICE_URL=http://eureka-discovery-server:8761/eureka/
     depends_on:
       - eureka-discovery-server
       - movie-info-service
