@@ -1,0 +1,20 @@
+version: '2.2'
+services:
+  movie-info-service:
+    image: movie-info:1.0.1
+    environment:
+      - EUREKA_SERVICE_URL=http://eureka-server-v1:8761/eureka/
+    depends_on:
+      - eureka-server-v1
+    links:
+      - eureka-server-v1:eureka-server
+    ports:
+      - 8180:8180
+
+  eureka-server-v1:
+    image: eureka-server
+    ports:
+    - 8761:8761
+    environment:
+      - SERVER_PORT=8761
+

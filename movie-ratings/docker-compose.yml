@@ -1,0 +1,26 @@
+version: '2.2'
+services:
+  rating-service:
+    image: movie-ratings-ext-mongo
+    scale:
+      '2'
+    environment:
+      - MONGODB_URI=mongodb://ratings-mongo:27017/test
+    depends_on:
+      - ratings-mongo
+    links:
+      - ratings-mongo:mongo
+    ports:
+    - 8280
+
+  ratings-mongo:
+    image: mongo
+    ports:
+    - 27017:27017
+    volumes:
+    - mongodata:/data/db
+
+volumes:
+    mongodata:
+      external: true
+
