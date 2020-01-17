@@ -1,0 +1,67 @@
+version: '3'
+services:
+  eureka-discovery-server:
+    image: pankajsharma151290/eureka-server
+    environment:
+      - SERVER_PORT=8761
+    ports:
+    - 8761:8761
+    networks:
+      - spring-cloud-network
+
+  movie-ratings-mongodb:
+    image: mongo
+    ports:
+    - 27017:27017
+    volumes:
+    - mongodata:/data/db
+    networks:
+      - spring-cloud-network
+
+  movie-info-service:
+    image: pankajsharma151290/movie-info
+    environment:
+      - EUREKA_SERVICE_URL=http://eureka-discovery-server:8761/eureka/
+    depends_on:
+      - eureka-discovery-server
+    networks:
+      - spring-cloud-network
+    ports:
+    - 8180:8180
+
+  movie-ratings-service:
+    image: pankajsharma151290/movie-ratings
+    environment:
+      - MONGODB_URI=mongodb://movie-ratings-mongodb:27017/test
+      - EUREKA_SERVICE_URL=http://eureka-discovery-server:8761/eureka/
+    depends_on:
+      - movie-ratings-mongodb
+      - eureka-discovery-server
+    networks:
+      - spring-cloud-network
+    ports:
+    - 8280:8280
+
+  movies-catalog-service:
+    image: pankajsharma151290/movie-catalog
+    environment:
+      - MOVIE_INFO_SERVICE_NAME=movie-info-service
+      - MOVIE_RATINGS_SERVICE_NAME=movie-ratings-service
+      - EUREKA_SERVICE_URL=http://eureka-discovery-server:8761/eureka/
+    depends_on:
+      - eureka-discovery-server
+      - movie-info-service
+      - movie-ratings-service
+    networks:
+      - spring-cloud-network
+    ports:
+    - 8380:8380
+
+volumes:
+  mongodata:
+    external: true
+
+networks:
+  spring-cloud-network:
+      driver: bridge
+
