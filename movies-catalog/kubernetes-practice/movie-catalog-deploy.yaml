@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-catalog
+  labels:
+    app: movie-catalog
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: movie-catalog
+  template:
+    metadata:
+      name: movie-catalog
+      labels:
+        app: movie-catalog
+        tier: backend
+    spec:
+      containers:
+        - name: movie-catalog
+          image: pankajsharma151290/movie-catalog
+          env:
+            - name: MOVIE_INFO_SERVICE_NAME
+              value: movie-info
+              name: MOVIE_RATINGS_SERVICE_NAME
+              value: movie-ratings
+          ports:
+            - containerPort: 8380

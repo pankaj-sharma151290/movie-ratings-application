@@ -1,0 +1,26 @@
+#Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: nginx-deployment
+  labels: 
+    app: nginx-app
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: nginx-app
+    matchExpressions:
+     - {key: tier, operator: In, values: [FE]}
+  template:
+    metadata:
+      name: nginx-pod
+      labels: 
+        app: nginx-app
+        tier: FE		
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+        ports:
+        - containerPort: 80

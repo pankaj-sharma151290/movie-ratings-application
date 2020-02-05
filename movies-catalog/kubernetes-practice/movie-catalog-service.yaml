@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: movie-catalog-service
+  labels:
+    app: movie-catalog
+    tier: backend
+spec:
+  selector:
+    app: movie-catalog
+  type: NodePort
+  ports:
+    - nodePort: 31003
+      port: 8380
+      targetPort: 8380

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+metadata:
+  name: movie-ratings-db
+  labels:
+    app: movie-ratings-db
+    tier: backend
+kind: Deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: movie-ratings-db
+  template:
+    metadata:
+      name: movie-ratings-db
+      labels:
+        app: movie-ratings-db
+        tier: backend
+    spec:
+      containers:
+        - name: movie-ratings-db
+          image: mongo
+          ports:
+          - containerPort: 27017

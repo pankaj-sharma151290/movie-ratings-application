@@ -1,0 +1,17 @@
+#------------
+#Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: movie-info
+  labels:
+    app: movie-info
+    tier: backend
+spec:
+  selector:
+    app: movie-info
+  type: NodePort
+  ports:
+  - nodePort: 31001
+    port: 8180
+    targetPort: 8180

@@ -1,0 +1,27 @@
+#Eureka-Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eureka-discovery-server
+  labels:
+    app: eureka-discovery-server
+    tier: backend
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: eureka-discovery-server
+    matchExpressions:
+      - {key: tier, operator: In, values: [backend]}
+  template:
+    metadata:
+      name: eureka-discovery-server
+      labels:
+        app: eureka-discovery-server
+        tier: backend
+    spec:
+      containers:
+      - name: eureka-discovery-server
+        image: pankajsharma151290/eureka-server
+        ports:
+        - containerPort: 8761

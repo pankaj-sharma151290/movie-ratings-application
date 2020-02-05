@@ -1,0 +1,27 @@
+#Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-info
+  labels:
+    app: movie-info
+    tier: backend
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: movie-info
+    matchExpressions:
+      - {key: tier, operator: In, values: [backend]}
+  template:
+    metadata:
+      name: movie-info
+      labels:
+        app: movie-info
+        tier: backend
+    spec:
+      containers:
+      - name: movie-info
+        image: pankajsharma151290/movie-info
+        ports:
+        - containerPort: 8180

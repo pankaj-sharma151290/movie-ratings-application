@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-ratings
+  labels:
+    app: movie-ratings
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: movie-ratings
+  template:
+    metadata:
+      name: movie-ratings
+      labels:
+        app: movie-ratings
+        tier: backend		
+    spec:
+      containers:
+        - name: movie-ratings
+          image: pankajsharma151290/movie-ratings
+          env:
+            - name: MONGODB_URI
+              value: mongodb://movie-ratings-db:27017/test
+          ports:
+          - containerPort: 8280    	      
