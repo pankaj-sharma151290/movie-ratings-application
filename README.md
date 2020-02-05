@@ -7,8 +7,11 @@
 3> Written unit test to cover 100% coverage using Mockito, jUnit-5, MockMvc
 4> Used derby(JPA), MongoDb, H2 Data base
 5> Implementation of Stress testing using Gatling 
+6> Dockerize spring boot app (microservices)
 
 #There are few more things to be added
-Docker
 K8
-API Gateway
+API Gateway(Zuul)
+spring security
+Spring volt
+config server
