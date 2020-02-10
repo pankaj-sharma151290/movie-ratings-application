@@ -11,6 +11,7 @@
 7> K8s
 8> API Gateway(Zuul)
 9> config server
+10 Solr microservice
 
 
 
