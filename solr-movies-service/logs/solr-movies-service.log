@@ -1,0 +1,100 @@
+2020-02-10 01:41:51.291  INFO [solr-movies-service,,,] 8228 --- [main] c.s.m.s.SolrMoviesServiceApplication     : No active profile set, falling back to default profiles: default
+2020-02-10 01:41:52.099  INFO [solr-movies-service,,,] 8228 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Solr repositories in DEFAULT mode.
+2020-02-10 01:41:52.260  INFO [solr-movies-service,,,] 8228 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 149ms. Found 1 Solr repository interfaces.
+2020-02-10 01:41:52.339  WARN [solr-movies-service,,,] 8228 --- [main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2020-02-10 01:41:52.576  INFO [solr-movies-service,,,] 8228 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=57937cbe-8ac2-3009-b7e2-80b8db79a5ba
+2020-02-10 01:41:53.563  INFO [solr-movies-service,,,] 8228 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7980 (http)
+2020-02-10 01:41:53.572  INFO [solr-movies-service,,,] 8228 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-10 01:41:53.572  INFO [solr-movies-service,,,] 8228 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-02-10 01:41:53.719  INFO [solr-movies-service,,,] 8228 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-10 01:41:53.720  INFO [solr-movies-service,,,] 8228 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2411 ms
+2020-02-10 01:41:53.853  WARN [solr-movies-service,,,] 8228 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-02-10 01:41:53.853  INFO [solr-movies-service,,,] 8228 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-02-10 01:41:53.870  INFO [solr-movies-service,,,] 8228 --- [main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@202898d7
+2020-02-10 01:41:56.328  WARN [solr-movies-service,,,] 8228 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-02-10 01:41:56.328  INFO [solr-movies-service,,,] 8228 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-02-10 01:41:56.577  INFO [solr-movies-service,,,] 8228 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-10 01:41:57.998  WARN [solr-movies-service,,,] 8228 --- [main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-02-10 01:41:58.673  INFO [solr-movies-service,,,] 8228 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-02-10 01:41:58.715  INFO [solr-movies-service,,,] 8228 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2020-02-10 01:41:58.779  INFO [solr-movies-service,,,] 8228 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2020-02-10 01:41:58.834  INFO [solr-movies-service,,,] 8228 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2020-02-10 01:41:58.834  INFO [solr-movies-service,,,] 8228 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2020-02-10 01:41:58.952  INFO [solr-movies-service,,,] 8228 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2020-02-10 01:41:58.953  INFO [solr-movies-service,,,] 8228 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2020-02-10 01:41:59.106  INFO [solr-movies-service,,,] 8228 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-02-10 01:41:59.392  INFO [solr-movies-service,,,] 8228 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2020-02-10 01:41:59.392  INFO [solr-movies-service,,,] 8228 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2020-02-10 01:41:59.392  INFO [solr-movies-service,,,] 8228 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2020-02-10 01:41:59.393  INFO [solr-movies-service,,,] 8228 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2020-02-10 01:41:59.393  INFO [solr-movies-service,,,] 8228 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2020-02-10 01:41:59.393  INFO [solr-movies-service,,,] 8228 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2020-02-10 01:41:59.393  INFO [solr-movies-service,,,] 8228 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2020-02-10 01:41:59.684  INFO [solr-movies-service,,,] 8228 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2020-02-10 01:41:59.686  INFO [solr-movies-service,,,] 8228 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2020-02-10 01:41:59.688  INFO [solr-movies-service,,,] 8228 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2020-02-10 01:41:59.691  INFO [solr-movies-service,,,] 8228 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1581295319690 with initial instances count: 5
+2020-02-10 01:41:59.699  INFO [solr-movies-service,,,] 8228 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application SOLR-MOVIES-SERVICE with eureka with status UP
+2020-02-10 01:41:59.699  INFO [solr-movies-service,,,] 8228 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1581295319699, current=UP, previous=STARTING]
+2020-02-10 01:41:59.702  INFO [solr-movies-service,,,] 8228 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SOLR-MOVIES-SERVICE/WSNL-TFhHJVjWFM.eeghlan.net:solr-movies-service:7980: registering service...
+2020-02-10 01:41:59.743  INFO [solr-movies-service,,,] 8228 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SOLR-MOVIES-SERVICE/WSNL-TFhHJVjWFM.eeghlan.net:solr-movies-service:7980 - registration status: 204
+2020-02-10 01:41:59.763  INFO [solr-movies-service,,,] 8228 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7980 (http) with context path ''
+2020-02-10 01:41:59.764  INFO [solr-movies-service,,,] 8228 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 7980
+2020-02-10 01:42:00.288  INFO [solr-movies-service,,,] 8228 --- [main] c.s.m.s.SolrMoviesServiceApplication     : Started SolrMoviesServiceApplication in 10.857 seconds (JVM running for 11.654)
+2020-02-10 01:42:33.977  INFO [solr-movies-service,,,] 8228 --- [http-nio-7980-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-02-10 01:42:33.978  INFO [solr-movies-service,,,] 8228 --- [http-nio-7980-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-02-10 01:42:33.988  INFO [solr-movies-service,,,] 8228 --- [http-nio-7980-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-02-10 01:53:40.144  INFO [solr-movies-service,,,] 27824 --- [main] c.s.m.s.SolrMoviesServiceApplication     : No active profile set, falling back to default profiles: default
+2020-02-10 01:53:41.758  INFO [solr-movies-service,,,] 27824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Solr repositories in DEFAULT mode.
+2020-02-10 01:53:42.062  INFO [solr-movies-service,,,] 27824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 287ms. Found 1 Solr repository interfaces.
+2020-02-10 01:53:42.216  WARN [solr-movies-service,,,] 27824 --- [main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2020-02-10 01:53:42.494  INFO [solr-movies-service,,,] 27824 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=3c5a57bf-10ac-34a9-91aa-c23083f97469
+2020-02-10 01:53:44.135  INFO [solr-movies-service,,,] 27824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7980 (http)
+2020-02-10 01:53:44.157  INFO [solr-movies-service,,,] 27824 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-10 01:53:44.158  INFO [solr-movies-service,,,] 27824 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-02-10 01:53:44.440  INFO [solr-movies-service,,,] 27824 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-10 01:53:44.441  INFO [solr-movies-service,,,] 27824 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4257 ms
+2020-02-10 01:53:44.690  WARN [solr-movies-service,,,] 27824 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-02-10 01:53:44.690  INFO [solr-movies-service,,,] 27824 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-02-10 01:53:44.726  INFO [solr-movies-service,,,] 27824 --- [main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@70b48eb3
+2020-02-10 01:53:49.253  INFO [solr-movies-service,,,] 27824 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-02-10 01:53:49.496  INFO [solr-movies-service,,,] 27824 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-02-10 01:53:49.541  WARN [solr-movies-service,,,] 27824 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-02-10 01:53:49.542  INFO [solr-movies-service,,,] 27824 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-02-10 01:53:49.804  INFO [solr-movies-service,,,] 27824 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-10 01:53:51.309  WARN [solr-movies-service,,,] 27824 --- [main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-02-10 01:53:52.003  INFO [solr-movies-service,,,] 27824 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2020-02-10 01:53:52.088  INFO [solr-movies-service,,,] 27824 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2020-02-10 01:53:52.143  INFO [solr-movies-service,,,] 27824 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2020-02-10 01:53:52.144  INFO [solr-movies-service,,,] 27824 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2020-02-10 01:53:52.418  INFO [solr-movies-service,,,] 27824 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2020-02-10 01:53:52.419  INFO [solr-movies-service,,,] 27824 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2020-02-10 01:53:52.574  INFO [solr-movies-service,,,] 27824 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-02-10 01:53:52.846  INFO [solr-movies-service,,,] 27824 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2020-02-10 01:53:52.846  INFO [solr-movies-service,,,] 27824 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2020-02-10 01:53:52.846  INFO [solr-movies-service,,,] 27824 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2020-02-10 01:53:52.846  INFO [solr-movies-service,,,] 27824 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2020-02-10 01:53:52.846  INFO [solr-movies-service,,,] 27824 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2020-02-10 01:53:52.846  INFO [solr-movies-service,,,] 27824 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2020-02-10 01:53:52.847  INFO [solr-movies-service,,,] 27824 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2020-02-10 01:53:52.962  INFO [solr-movies-service,,,] 27824 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2020-02-10 01:53:52.964  INFO [solr-movies-service,,,] 27824 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2020-02-10 01:53:52.966  INFO [solr-movies-service,,,] 27824 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2020-02-10 01:53:52.969  INFO [solr-movies-service,,,] 27824 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1581296032968 with initial instances count: 5
+2020-02-10 01:53:52.974  INFO [solr-movies-service,,,] 27824 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application SOLR-MOVIES-SERVICE with eureka with status UP
+2020-02-10 01:53:52.975  INFO [solr-movies-service,,,] 27824 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1581296032975, current=UP, previous=STARTING]
+2020-02-10 01:53:52.977  INFO [solr-movies-service,,,] 27824 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SOLR-MOVIES-SERVICE/WSNL-TFhHJVjWFM.eeghlan.net:solr-movies-service:7980: registering service...
+2020-02-10 01:53:52.978  INFO [solr-movies-service,,,] 27824 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-02-10 01:53:53.011  INFO [solr-movies-service,,,] 27824 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_SOLR-MOVIES-SERVICE/WSNL-TFhHJVjWFM.eeghlan.net:solr-movies-service:7980 - registration status: 204
+2020-02-10 01:53:53.011  INFO [solr-movies-service,,,] 27824 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-02-10 01:53:53.047  INFO [solr-movies-service,,,] 27824 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-02-10 01:53:53.166  INFO [solr-movies-service,,,] 27824 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_1
+2020-02-10 01:53:53.167  INFO [solr-movies-service,,,] 27824 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: handleUsingGET_2
+2020-02-10 01:53:53.217  INFO [solr-movies-service,,,] 27824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7980 (http) with context path ''
+2020-02-10 01:53:53.217  INFO [solr-movies-service,,,] 27824 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 7980
+2020-02-10 01:53:53.745  INFO [solr-movies-service,,,] 27824 --- [main] c.s.m.s.SolrMoviesServiceApplication     : Started SolrMoviesServiceApplication in 16.314 seconds (JVM running for 17.136)
+2020-02-10 01:54:08.234  INFO [solr-movies-service,,,] 27824 --- [http-nio-7980-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-02-10 01:54:08.234  INFO [solr-movies-service,,,] 27824 --- [http-nio-7980-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-02-10 01:54:08.246  INFO [solr-movies-service,,,] 27824 --- [http-nio-7980-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2020-02-10 01:58:52.848  INFO [solr-movies-service,,,] 27824 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-02-10 02:03:52.850  INFO [solr-movies-service,,,] 27824 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration

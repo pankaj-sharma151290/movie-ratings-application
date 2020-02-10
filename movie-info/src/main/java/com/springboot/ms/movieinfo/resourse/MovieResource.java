@@ -1,6 +1,5 @@
 package com.springboot.ms.movieinfo.resourse;
 
-import com.springboot.ms.movieinfo.model.Movie;
 import com.springboot.ms.movieinfo.resourseobject.MovieRO;
 import com.springboot.ms.movieinfo.resourseobject.MoviesRO;
 import com.springboot.ms.movieinfo.service.MovieService;
@@ -8,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+
 @RequestMapping(value = "/movies")
 public class MovieResource {
 
@@ -43,7 +43,6 @@ public class MovieResource {
     public MovieRO updateMovie(@RequestBody MovieRO movieRO) {
         return movieService.addMovie(movieRO);
     }
-
 
 }
 

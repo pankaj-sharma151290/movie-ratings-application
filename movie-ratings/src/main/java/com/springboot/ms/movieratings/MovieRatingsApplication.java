@@ -1,5 +1,6 @@
 package com.springboot.ms.movieratings;
 
+import brave.sampler.Sampler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -19,6 +20,7 @@ public class MovieRatingsApplication {
 		SpringApplication.run(MovieRatingsApplication.class, args);
 	}
 
+	//for swagger
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2)
@@ -26,5 +28,11 @@ public class MovieRatingsApplication {
 				.apis(RequestHandlerSelectors.any())
 				.paths(PathSelectors.any())
 				.build();
+	}
+
+	//For Sleuth
+	@Bean
+	public Sampler defaultSampler() {
+		return Sampler.ALWAYS_SAMPLE;
 	}
 }

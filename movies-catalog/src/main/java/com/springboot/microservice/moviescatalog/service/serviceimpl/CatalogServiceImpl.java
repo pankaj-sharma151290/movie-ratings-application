@@ -1,5 +1,6 @@
 package com.springboot.microservice.moviescatalog.service.serviceimpl;
 
+import com.springboot.microservice.moviescatalog.client.MovieInfoServieClient;
 import com.springboot.microservice.moviescatalog.resourceobject.*;
 import com.springboot.microservice.moviescatalog.service.CatalogService;
 import com.springboot.microservice.moviescatalog.service.MovieInfoService;
@@ -43,13 +44,17 @@ public class CatalogServiceImpl implements CatalogService {
     @Value("${movie.ratings.service}")
     private String ratingsServiceName;
 
+    @Autowired
+    private MovieInfoServieClient movieInfoServieClient;
+
     @Override
     public MovieRatingsCatalogRO getMovieRatingsCatalog() {
         MovieRatingsCatalogRO movieRatingsCatalogRO = new MovieRatingsCatalogRO();
         String movieServiceURL = "http://" + movieInfoServiceName + "/movies";
         String ratingServiceURL = "http://" + ratingsServiceName + "/rating";
 
-        MoviesRO movies = movieInfoService.getMovieData(movieServiceURL);
+        //MoviesRO movies = movieInfoService.getMovieData(movieServiceURL);
+        MoviesRO movies = movieInfoServieClient.getMovies();
         if (Objects.nonNull(movies) && Objects.nonNull(movies.getMovies()) && Strings.isBlank(movies.getError())) {
             movieRatingsCatalogRO.setActiveMovieServiceInstance(movies.getServicePort());
             List<MovieRatingsRO> movieRatingList = new ArrayList<>(0);
