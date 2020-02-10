@@ -8,10 +8,13 @@
 4> Used derby(JPA), MongoDb, H2 Data base
 5> Implementation of Stress testing using Gatling 
 6> Dockerize spring boot app (microservices)
+7> K8s
+8> API Gateway(Zuul)
+9> config server
+
+
 
 #There are few more things to be added
-K8
-API Gateway(Zuul)
+
 spring security
 Spring volt
-config server
