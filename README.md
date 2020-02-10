@@ -19,4 +19,5 @@
 #There are few more things to be added
 
 spring security
+Spring exception Handling
 Spring volt
