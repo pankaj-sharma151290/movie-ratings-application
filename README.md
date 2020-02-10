@@ -8,10 +8,11 @@
 4> Used derby(JPA), MongoDb, H2 Data base
 5> Implementation of Stress testing using Gatling 
 6> Dockerize spring boot app (microservices)
-7> K8s
+7> K8s (Node, Pods, RC, RS, Deployment, Servces, Storage Vol, PV, PVC)
 8> API Gateway(Zuul)
 9> config server
 10 Solr microservice
+11 Distributed Logging/tracing using sleuth, zippkin, rabitMQ
 
 
 
