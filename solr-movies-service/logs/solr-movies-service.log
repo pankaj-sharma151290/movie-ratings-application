@@ -98,3 +98,5 @@
 2020-02-10 01:54:08.246  INFO [solr-movies-service,,,] 27824 --- [http-nio-7980-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
 2020-02-10 01:58:52.848  INFO [solr-movies-service,,,] 27824 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
 2020-02-10 02:03:52.850  INFO [solr-movies-service,,,] 27824 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-02-10 02:08:52.852  INFO [solr-movies-service,,,] 27824 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-02-10 02:13:52.854  INFO [solr-movies-service,,,] 27824 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
