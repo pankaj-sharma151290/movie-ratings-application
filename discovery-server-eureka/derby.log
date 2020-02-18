@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Sun Feb 09 13:50:10 CET 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0170-2a00-0378-0000092f0910 
+Tue Feb 18 01:21:02 CET 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0170-55ab-63fa-000011f9eef0 
 on database directory memory:C:\Pankaj\Pankaj\My_Repo\movie-rating-application\discovery-server-eureka\testdb with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
 Loaded from file:/C:/Users/nlpansha/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation

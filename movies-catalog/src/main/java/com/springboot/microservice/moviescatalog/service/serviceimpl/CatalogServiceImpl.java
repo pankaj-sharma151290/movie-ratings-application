@@ -1,18 +1,15 @@
 package com.springboot.microservice.moviescatalog.service.serviceimpl;
 
 import com.springboot.microservice.moviescatalog.client.MovieInfoServieClient;
+import com.springboot.microservice.moviescatalog.client.MovieRatingsServiceClient;
 import com.springboot.microservice.moviescatalog.resourceobject.*;
 import com.springboot.microservice.moviescatalog.service.CatalogService;
-import com.springboot.microservice.moviescatalog.service.MovieInfoService;
-import com.springboot.microservice.moviescatalog.service.RatingsService;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,19 +21,10 @@ import java.util.stream.Collectors;
 public class CatalogServiceImpl implements CatalogService {
 
     @Autowired
-    private RestTemplate restTemplate;
-
-    @Autowired
     private Environment environment;
 
     @Autowired
     private DiscoveryClient discoveryClient;
-
-    @Autowired
-    private MovieInfoService movieInfoService;
-
-    @Autowired
-    private RatingsService ratingsService;
 
     @Value("${movie.info.service}")
     private String movieInfoServiceName;
@@ -47,13 +35,12 @@ public class CatalogServiceImpl implements CatalogService {
     @Autowired
     private MovieInfoServieClient movieInfoServieClient;
 
+    @Autowired
+    private MovieRatingsServiceClient movieRatingsServiceClient;
+
     @Override
     public MovieRatingsCatalogRO getMovieRatingsCatalog() {
         MovieRatingsCatalogRO movieRatingsCatalogRO = new MovieRatingsCatalogRO();
-        String movieServiceURL = "http://" + movieInfoServiceName + "/movies";
-        String ratingServiceURL = "http://" + ratingsServiceName + "/rating";
-
-        //MoviesRO movies = movieInfoService.getMovieData(movieServiceURL);
         MoviesRO movies = movieInfoServieClient.getMovies();
         if (Objects.nonNull(movies) && Objects.nonNull(movies.getMovies()) && Strings.isBlank(movies.getError())) {
             movieRatingsCatalogRO.setActiveMovieServiceInstance(movies.getServicePort());
@@ -61,8 +48,7 @@ public class CatalogServiceImpl implements CatalogService {
             for (MovieRO movieRO : movies.getMovies()) {
                 MovieRatingsRO movieRatingsRO = new MovieRatingsRO();
                 movieRatingsRO.setMovie(movieRO);
-                String reqParam = "?movieId=" + movieRO.getId();
-                RatingsRO ratings = ratingsService.getRatingsData(ratingServiceURL.concat(reqParam));
+                RatingsRO ratings = movieRatingsServiceClient.getRatingsByMovieId(movieRO.getId());
                 movieRatingsCatalogRO.setActiveRatingsServiceInstance(ratings.getServicePort());
                 movieRatingsRO.setRatings(ratings.getRatings());
                 movieRatingList.add(movieRatingsRO);
@@ -79,12 +65,7 @@ public class CatalogServiceImpl implements CatalogService {
     public MovieRatingsCatalogRO getMovieRatingsCatalogForUser(String userId) {
         MovieRatingsCatalogRO movieRatingsCatalogRO = new MovieRatingsCatalogRO();
 
-        String baseMovieServiceURL = "http://" + movieInfoServiceName + "/movies/{movieId}";
-        String baseRatingServiceURL = "http://" + ratingsServiceName + "/rating/user";
-        UriComponentsBuilder urlBuilder = UriComponentsBuilder.fromUriString(baseRatingServiceURL)
-                .queryParam("userId", userId);
-        String ratingsServiceURL = urlBuilder.buildAndExpand().toUriString();
-        RatingsRO ratings = ratingsService.getRatingsData(ratingsServiceURL);
+        RatingsRO ratings = movieRatingsServiceClient.getRatingsByUserId(userId);
         if (Objects.nonNull(ratings) && Strings.isBlank(ratings.getError())) {
             List<MovieRatingsRO> movieRatingsList = new ArrayList<>(0);
             movieRatingsCatalogRO.setActiveRatingsServiceInstance(ratings.getServicePort());
@@ -92,7 +73,7 @@ public class CatalogServiceImpl implements CatalogService {
                 MovieRatingsRO movieRatingRO = new MovieRatingsRO();
                 movieRatingRO.setRatings(Arrays.asList(ratingRO));
                 String movieId = ratingRO.getMovieId();
-                MovieRO movieRO = movieInfoService.getMovieData(baseMovieServiceURL, movieId);
+                MovieRO movieRO = movieInfoServieClient.getMovieByID(movieId);
                 movieRatingRO.setMovie(movieRO);
                 movieRatingsList.add(movieRatingRO);
             }
@@ -109,22 +90,15 @@ public class CatalogServiceImpl implements CatalogService {
         MovieRatingCatalogRO movieRatingCatalogRO = new MovieRatingCatalogRO();
         List<MovieRatingRO> movieRatingROList = new ArrayList<>(0);
 
-        String baseMovieServiceURL = "http://" + movieInfoServiceName + "/movies/extres/themoviedb/{movieId}";
-        String baseRatingServiceURL = "http://" + ratingsServiceName + "/rating/user";
-
-        UriComponentsBuilder urlBuilder = UriComponentsBuilder.fromUriString(baseRatingServiceURL)
-                .queryParam("userId", userId);
-        String ratingsServiceURL = urlBuilder.buildAndExpand().toUriString();
-        RatingsRO ratings = ratingsService.getRatingsData(ratingsServiceURL);
+        RatingsRO ratings = movieRatingsServiceClient.getRatingsByUserId(userId);
         if (Objects.nonNull(ratings) && Strings.isBlank(ratings.getError())) {
             for (RatingRO ratingRO : ratings.getRatings()) {
                 String movieId = ratingRO.getMovieId();
-                MovieRO movieRO = movieInfoService.getMovieData(baseMovieServiceURL, movieId);
+                MovieRO movieRO = movieInfoServieClient.getMovieByIDExtResource(movieId);
                 movieRatingROList.add(new MovieRatingRO(movieRO, ratingRO));
             }
             movieRatingCatalogRO.setMovieRatingROList(movieRatingROList);
-        }
-        else {
+        } else {
             movieRatingCatalogRO.setError(ratings.getError());
         }
         return movieRatingCatalogRO;

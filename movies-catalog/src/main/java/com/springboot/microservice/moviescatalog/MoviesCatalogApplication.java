@@ -32,12 +32,6 @@ public class MoviesCatalogApplication {
     }
 
     @Bean
-    @LoadBalanced
-    public RestTemplate getRestTemplate() {
-        return new RestTemplate();
-    }
-
-    @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()

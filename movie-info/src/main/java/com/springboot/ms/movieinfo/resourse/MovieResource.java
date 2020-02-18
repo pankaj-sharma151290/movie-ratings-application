@@ -1,10 +1,14 @@
 package com.springboot.ms.movieinfo.resourse;
 
+import com.springboot.ms.movieinfo.exceptionhandling.MovieNotFoundException;
 import com.springboot.ms.movieinfo.resourseobject.MovieRO;
 import com.springboot.ms.movieinfo.resourseobject.MoviesRO;
 import com.springboot.ms.movieinfo.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Objects;
 
 @RestController
 
@@ -14,11 +18,6 @@ public class MovieResource {
     @Autowired
     private MovieService movieService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/greet")
-    public String greetings() {
-        return "Hello";
-    }
-
     @RequestMapping(method = RequestMethod.GET, value = "")
     public MoviesRO getMovies() {
        return movieService.getMoviesList();
@@ -26,7 +25,10 @@ public class MovieResource {
 
     @RequestMapping(method = RequestMethod.GET, value = "/{movieId}")
     public MovieRO getMovieByIdIntResource(@PathVariable String movieId) {
-        return movieService.getMovieByID(movieId);
+        MovieRO movieRO = movieService.getMovieByID(movieId);
+        if(Objects.isNull(movieRO))
+            throw new MovieNotFoundException(movieId);
+        return movieRO;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "")

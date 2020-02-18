@@ -12,9 +12,9 @@ public class DefaultResource {
     @Value("${config.server.test.data}")
     private String configServerTestData;
 
-
     @RequestMapping("/")
     public String getStatus(){
         return "Movie-Info is up and running - " + configServerTestData;
     }
+
 }

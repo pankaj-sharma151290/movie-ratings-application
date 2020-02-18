@@ -1,12 +1,13 @@
 package com.springboot.ms.movieinfo.service.serviceimpl;
 
+import com.springboot.ms.movieinfo.client.TheMovieDBExtServiceClient;
 import com.springboot.ms.movieinfo.model.Movie;
 import com.springboot.ms.movieinfo.repository.MovieRepository;
 import com.springboot.ms.movieinfo.resourseobject.MovieRO;
 import com.springboot.ms.movieinfo.resourseobject.MoviesRO;
-import com.springboot.ms.movieinfo.service.MovieDBService;
 import com.springboot.ms.movieinfo.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,10 @@ public class MovieServiceImpl implements MovieService {
     private Environment environment;
 
     @Autowired
-    private MovieDBService movieDBService;
+    private TheMovieDBExtServiceClient movieDBExtClient;
+
+    @Value("${api.moviedb.key}")
+    private String movieDbApiKey;
 
     public MovieServiceImpl() {
     }
@@ -49,7 +53,8 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public MovieRO getMovieByIdExtResource(String movieId) {
-        MovieRO movieRO = movieDBService.getMovieData(movieId);
+       // MovieRO movieRO = movieDBService.getMovieData(movieId);
+        MovieRO movieRO = movieDBExtClient.getMovieByID(movieId, movieDbApiKey);
         if (Objects.nonNull(movieRO))
             addMovie(movieRO);
         return movieRO;

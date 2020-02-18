@@ -10,13 +10,8 @@ public class MovieRO {
     private String title;
     private String overview;
     private String servicePort;
-    private String error;
 
     public MovieRO() {
-    }
-
-    public MovieRO(String error) {
-        this.error = error;
     }
 
     public MovieRO(String id, String title, String overview) {
@@ -63,11 +58,4 @@ public class MovieRO {
         this.servicePort = servicePort;
     }
 
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
-    }
 }

@@ -4,11 +4,14 @@ import api.gateway.apigateway.filter.LoggingPreFilter;
 import api.gateway.apigateway.filter.SampleErrorFilter;
 import api.gateway.apigateway.filter.SamplePostFilter;
 import api.gateway.apigateway.filter.SampleRouteFilter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
+
 
 @SpringBootApplication
 @EnableZuulProxy
@@ -39,4 +42,8 @@ public class ApiGatewayApplication {
 		return new SampleRouteFilter();
 	}
 
+	@Bean
+	public Logger getLogger(){
+		return LoggerFactory.getLogger(LoggingPreFilter.class);
+	}
 }
