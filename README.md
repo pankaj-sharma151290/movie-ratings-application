@@ -11,13 +11,13 @@
 7> K8s (Node, Pods, RC, RS, Deployment, Servces, Storage Vol, PV, PVC)
 8> API Gateway(Zuul)
 9> config server
-10 Solr microservice
-11 Distributed Logging/tracing using sleuth, zippkin, rabitMQ
-
-
+10> Solr microservice
+11> Distributed Logging/tracing using sleuth, zippkin, rabitMQ
+12> Implemnted ehCache in movie-ratings API
+13> Implemented redis cache in movie-info API
+14> Implemented Spring security Authentication and Autorization
+15> Spring exception Handling
 
 #There are few more things to be added
 
-spring security
-Spring exception Handling
 Spring volt
