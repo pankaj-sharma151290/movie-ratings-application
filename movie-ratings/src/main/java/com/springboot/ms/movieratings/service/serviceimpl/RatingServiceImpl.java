@@ -6,6 +6,9 @@ import com.springboot.ms.movieratings.model.Rating;
 import com.springboot.ms.movieratings.repository.RatingRepository;
 import com.springboot.ms.movieratings.resourceobject.RatingsRO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
@@ -37,12 +40,25 @@ public class RatingServiceImpl implements RatingService {
     }
 
     @Override
-    public Optional<Rating> getRatingById(String id) {
+    @Cacheable(value = "Ratings-LRU-Cache", key = "'RatingById'+#id")
+    public Optional<Rating> getRatingById(String id){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return ratingRepository.findById(id);
     }
 
     @Override
-    public RatingsRO getRatingsByMovieId(String movieId) {
+    @CacheEvict(value = "Ratings-LRU-Cache", key = "'RatingsByMovieId'+#movieId", condition = "!#isCacheable", beforeInvocation = true)
+    @Cacheable(value = "Ratings-LRU-Cache", key = "'RatingsByMovieId'+#movieId", condition = "#isCacheable")
+    public RatingsRO getRatingsByMovieId(String movieId, boolean isCacheable) {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Iterable<Rating> ratingIterable = ratingRepository.findAllByMovieId(movieId);
         RatingsRO ratingsRO = new RatingsRO(StreamSupport.stream(ratingIterable.spliterator(), false).collect(Collectors.toList()));
         ratingsRO.setServicePort(getActiveServiceInstancePort());
@@ -50,7 +66,14 @@ public class RatingServiceImpl implements RatingService {
     }
 
     @Override
-    public RatingsRO getRatingsByUserId(String userId) {
+    @CacheEvict(value = "Ratings-LRU-Cache", key = "'RatingsByUserID'+#userId", condition = "!#isCacheable", beforeInvocation = true)
+    @Cacheable(value = "Ratings-LRU-Cache", key = "'RatingsByUserID'+#userId", condition = "#isCacheable")
+    public RatingsRO getRatingsByUserId(String userId, boolean isCacheable) {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Iterable<Rating> ratingIterable = ratingRepository.findAllByUserId(userId);
         RatingsRO ratingsRO = new RatingsRO(StreamSupport.stream(ratingIterable.spliterator(), false).collect(Collectors.toList()));
         ratingsRO.setServicePort(getActiveServiceInstancePort());
@@ -58,13 +81,16 @@ public class RatingServiceImpl implements RatingService {
     }
 
     @Override
+    @CachePut(value = "Ratings-LRU-Cache", key = "'RatingById'+#id")
     public RatingRO addRating(RatingRO ratingRO) {
         return new RatingRO(ratingRepository.save(RoToModelMapper(ratingRO)));
     }
 
     @Override
-    public void deleteRating(Rating rating) {
-        ratingRepository.delete(rating);
+    @CacheEvict(value = "Ratings-LRU-Cache", key = "'RatingById'+#id", beforeInvocation = true)
+    public Boolean deleteRating(String ratingId) {
+        ratingRepository.deleteById(ratingId);
+        return true;
     }
 
     private String getActiveServiceInstancePort() {

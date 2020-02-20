@@ -1,6 +1,7 @@
 package com.springboot.ms.movieinfo;
 
 import brave.sampler.Sampler;
+import com.springboot.ms.movieinfo.model.Movie;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -10,6 +11,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.core.HashOperations;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 import springfox.documentation.builders.PathSelectors;
@@ -31,13 +35,6 @@ public class MovieInfoApplication {
     }
 
     @Bean
-    public RestTemplate getRestTemplate() {
-        HttpComponentsClientHttpRequestFactory httpRequestFactory = new HttpComponentsClientHttpRequestFactory();
-        httpRequestFactory.setConnectionRequestTimeout(2000);
-        return new RestTemplate(httpRequestFactory);
-    }
-
-    @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
@@ -56,5 +53,18 @@ public class MovieInfoApplication {
     public Logger getLoogger() {
         return LoggerFactory.getLogger(this.getClass());
     }
+
+    @Bean
+    public JedisConnectionFactory jedisConnectionFactory(){
+        return  new JedisConnectionFactory();
+    }
+
+    @Bean
+    public RedisTemplate<String, Movie> movieRedisTemplate(){
+        RedisTemplate<String, Movie> movieRedisTemplate =  new RedisTemplate<>();
+        movieRedisTemplate.setConnectionFactory(jedisConnectionFactory());
+        return movieRedisTemplate;
+    }
+
 
 }

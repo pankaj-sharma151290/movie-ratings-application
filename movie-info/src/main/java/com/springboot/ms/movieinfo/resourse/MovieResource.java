@@ -32,7 +32,7 @@ public class MovieResource {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "")
-    public MovieRO addMovie(@RequestBody MovieRO movieRO) {
+    public Boolean addMovie(@RequestBody MovieRO movieRO) {
         return movieService.addMovie(movieRO);
     }
 
@@ -42,7 +42,7 @@ public class MovieResource {
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "")
-    public MovieRO updateMovie(@RequestBody MovieRO movieRO) {
+    public Boolean updateMovie(@RequestBody MovieRO movieRO) {
         return movieService.addMovie(movieRO);
     }
 

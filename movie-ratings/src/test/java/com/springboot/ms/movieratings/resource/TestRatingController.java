@@ -1,8 +1,6 @@
 package com.springboot.ms.movieratings.resource;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jayway.jsonpath.JsonPath;
 import com.springboot.ms.movieratings.model.Rating;
 import com.springboot.ms.movieratings.resourceobject.RatingRO;
 import com.springboot.ms.movieratings.resourceobject.RatingsRO;
@@ -17,17 +15,15 @@ import org.mockito.Mockito;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
-
 import java.util.List;
 import java.util.Optional;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -71,7 +67,7 @@ public class TestRatingController {
     public void testGetRatingsByMovieId() throws Exception {
         String movieId = "Movie_001";
         RatingsRO dummyRatingsRO = new RatingsRO(TestUtils.createDummyRatingsList(movieId));
-        Mockito.when(ratingService.getRatingsByMovieId(movieId)).thenReturn(dummyRatingsRO);
+        Mockito.when(ratingService.getRatingsByMovieId(movieId,false)).thenReturn(dummyRatingsRO);
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/rating")
                 .param("movieId", movieId)
@@ -86,7 +82,7 @@ public class TestRatingController {
         assertThat(actualList.get(1).getMovieId(), is(movieId));
         assertThat(actualList.get(2).getMovieId(), is(movieId));
         assertThat(actualList.get(0).getMovieId(), is(movieId));
-        Mockito.verify(ratingService, Mockito.times(1)).getRatingsByMovieId(movieId);
+        Mockito.verify(ratingService, Mockito.times(1)).getRatingsByMovieId(movieId,false);
     }
 
     @Test
@@ -111,7 +107,7 @@ public class TestRatingController {
     public void testGetRatingsByUserId() throws Exception {
         String userId = "User_001";
         RatingsRO dummyRatingsRO = new RatingsRO(TestUtils.createUserDummyRatingsList(userId));
-        Mockito.when(ratingService.getRatingsByUserId(userId)).thenReturn(dummyRatingsRO);
+        Mockito.when(ratingService.getRatingsByUserId(userId,false)).thenReturn(dummyRatingsRO);
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/rating/user").param("userId",userId)
                 .accept(MediaType.APPLICATION_JSON))
@@ -126,7 +122,7 @@ public class TestRatingController {
         assertThat(actualList.get(2).getUserId(), is(userId));
         assertThat(actualList.get(0).getUserId(), is(userId));
 
-        Mockito.verify(ratingService,Mockito.times(1)).getRatingsByUserId(userId);
+        Mockito.verify(ratingService,Mockito.times(1)).getRatingsByUserId(userId, false);
     }
 
     public void testGetAddRating() throws Exception {

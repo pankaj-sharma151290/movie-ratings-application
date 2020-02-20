@@ -104,7 +104,7 @@ public class TestMovieResouceTwo {
         Mockito.verify(movieService, Mockito.times(1)).getMoviesList();
     }
 
-    @Test
+   /* @Test
     public void testAddMovie() throws Exception {
         MovieRO movieRO = new MovieRO("123", "Movie_123", "Movie_123");
         Mockito.when(movieService.addMovie(Mockito.any(MovieRO.class))).thenReturn(movieRO);
@@ -119,7 +119,7 @@ public class TestMovieResouceTwo {
 
         Mockito.verify(movieService).addMovie(Mockito.any(MovieRO.class));
 
-    }
+    }*/
 
     private Iterable<Movie> getMoviesStub() {
         return Arrays.asList(

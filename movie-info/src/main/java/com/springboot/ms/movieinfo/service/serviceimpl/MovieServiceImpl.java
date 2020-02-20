@@ -34,7 +34,7 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public MoviesRO getMoviesList() {
-        final MoviesRO moviesRo = new MoviesRO(movieRepository.findAll());
+        final MoviesRO moviesRo = new MoviesRO(movieRepository.findAll().values());
         moviesRo.setServicePort(getActiveServiceInstancePort());
         return moviesRo;
     }
@@ -76,8 +76,8 @@ public class MovieServiceImpl implements MovieService {
     }*/
 
     @Override
-    public MovieRO addMovie(MovieRO movieRO) {
-        return new MovieRO(movieRepository.save(movieRoToMovieMapper(movieRO)));
+    public Boolean addMovie(MovieRO movieRO) {
+        return movieRepository.save(movieRoToMovieMapper(movieRO));
     }
 
     private String getActiveServiceInstancePort() {

@@ -11,7 +11,7 @@ public interface MovieService {
 
     public MovieRO getMovieByID(String movieId);
 
-    public MovieRO addMovie(MovieRO movie);
+    public Boolean addMovie(MovieRO movie);
 
     public MovieRO getMovieByIdExtResource(String movieId);
 

@@ -57,7 +57,7 @@ public class TestRatingService {
         List<Rating> dummyRatingsList = TestUtils.createDummyRatingsList(movieId);
         Mockito.when(ratingRepository.findAllByMovieId(movieId)).thenReturn(dummyRatingsList);
 
-        RatingsRO ratingsRO = ratingService.getRatingsByMovieId(movieId);
+        RatingsRO ratingsRO = ratingService.getRatingsByMovieId(movieId,false);
         List<Rating> actualList = ratingsRO.getRatings();
         assertThat(actualList, notNullValue());
         assertThat(actualList, hasSize(3));
@@ -74,7 +74,7 @@ public class TestRatingService {
         List<Rating> dummyRatingsList = TestUtils.createUserDummyRatingsList(userId);
         Mockito.when(ratingRepository.findAllByUserId(userId)).thenReturn(dummyRatingsList);
 
-        RatingsRO ratingsRO = ratingService.getRatingsByUserId(userId);
+        RatingsRO ratingsRO = ratingService.getRatingsByUserId(userId,false);
         List<Rating> actualList = ratingsRO.getRatings();
         assertThat(actualList, notNullValue());
         assertThat(actualList, hasSize(3));
@@ -101,7 +101,7 @@ public class TestRatingService {
     @Test
     public void testDeleteRating() {
         Mockito.doNothing().when(ratingRepository).delete(Mockito.any(Rating.class));
-        ratingService.deleteRating(new Rating("001", "Movie_001", "User_001", 2, "I give 2 stars"));
+        ratingService.deleteRating("001");
         Mockito.verify(ratingRepository, Mockito.times(1)).delete(Mockito.any(Rating.class));
     }
 }

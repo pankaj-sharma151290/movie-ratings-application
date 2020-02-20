@@ -1,16 +1,11 @@
 package com.springboot.ms.movieinfo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.io.Serializable;
 
-@Entity
-public class Movie {
+public class Movie implements Serializable {
 
-    @Id
     private String id;
     private String title;
-    @Column(length = 500)
     private String overview;
 
     public Movie() {
