@@ -21,3 +21,6 @@
 #There are few more things to be added
 
 Spring volt
+RabbitMQ producer-consumer
+CI/CD
+Kops
