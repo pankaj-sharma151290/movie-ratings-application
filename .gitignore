@@ -2,3 +2,4 @@
 /solr-movies-service/logs
 /movies-catalog/*.log
 /discovery-server-eureka/*.log
+/solr-movies-service/logs/*.log

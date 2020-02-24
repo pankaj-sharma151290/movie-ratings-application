@@ -1,20 +1,56 @@
-version: '2.2'
+version: '3'
 services:
   movie-info-service:
-    image: movie-info:1.0.1
+    image: movie-info
     environment:
-      - EUREKA_SERVICE_URL=http://eureka-server-v1:8761/eureka/
+      - SERVER_PORT=8180
+      - EUREKA_HOST=eureka-server
+      - EUREKA_PORT=8761
+      - CONFIG_SERVER_HOST=could-config-server
+      - CONFIG_SERVER_PORT=8888
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
     depends_on:
-      - eureka-server-v1
-    links:
-      - eureka-server-v1:eureka-server
+      - eureka-server
+      - redis
+      - could-config-server
     ports:
       - 8180:8180
+    networks:
+      - spring-cloud-network
 
-  eureka-server-v1:
+  eureka-server:
     image: eureka-server
     ports:
-    - 8761:8761
+      - 8761:8761
     environment:
       - SERVER_PORT=8761
+    networks:
+      - spring-cloud-network
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+    networks:
+      - spring-cloud-network
+
+  could-config-server:
+    image: could-config-server
+    environment:
+      - SERVER_PORT=8888
+    ports:
+      - 8888:8888
+    networks:
+      - spring-cloud-network
+
+volumes:
+  redis-data:
+    external: true
+
+networks:
+  spring-cloud-network:
+    driver: bridge
 
