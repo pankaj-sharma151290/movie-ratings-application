@@ -1,5 +1,6 @@
 FROM openjdk:8-jdk-alpine
 MAINTAINER Pankaj Sharma
+ENV SERVER_PORT=8180
 ENV EUREKA_HOST=localhost
 ENV EUREKA_PORT=8761
 ENV CONFIG_SERVER_HOST=localhost

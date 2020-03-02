@@ -4,6 +4,7 @@ import brave.sampler.Sampler;
 import com.springboot.ms.movieinfo.model.Movie;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -11,6 +12,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -29,6 +31,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableCircuitBreaker
 @EnableFeignClients
 public class MovieInfoApplication {
+
+    @Value("${spring.redis.host}")
+    private String redisHost;
+
+    @Value("${spring.redis.port}")
+    private int redisPort;
 
     public static void main(String[] args) {
         SpringApplication.run(MovieInfoApplication.class, args);
@@ -56,7 +64,8 @@ public class MovieInfoApplication {
 
     @Bean
     public JedisConnectionFactory jedisConnectionFactory(){
-        return  new JedisConnectionFactory();
+        RedisStandaloneConfiguration config = new RedisStandaloneConfiguration(redisHost,redisPort);
+        return new JedisConnectionFactory(config);
     }
 
     @Bean
