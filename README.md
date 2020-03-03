@@ -18,9 +18,4 @@
 14> Implemented Spring security Authentication and Autorization
 15> Spring exception Handling
 
-#There are few more things to be added
 
-Spring volt
-RabbitMQ producer-consumer
-CI/CD
-Kops
